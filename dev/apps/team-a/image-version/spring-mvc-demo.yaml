@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-mvc-demo
+  namespace: team-a
+spec:
+  template:
+    spec:
+      containers:
+        - name: spring-mvc-demo
+          image: ebinsu/spring-mvc-demo:1.5 # {"$imagepolicy": "flux-system:spring-mvc-demo"}
