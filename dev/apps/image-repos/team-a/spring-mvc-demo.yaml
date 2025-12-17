@@ -1,0 +1,23 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: spring-mvc-demo
+  namespace: flux-system
+spec:
+  image: ebinsu/spring-mvc-demo
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: spring-mvc-demo
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: spring-mvc-demo
+#  digestReflectionPolicy: IfNotPresent
+  filterTags:
+    pattern: '\d*\.\d*'
+  policy:
+    alphabetical:
+      order: "asc"
