@@ -9,5 +9,5 @@
 .terraform/
 terraform.tfstate
 
-terraform.tfvars.local
+.secrets.tfvars
 backend.hcl
