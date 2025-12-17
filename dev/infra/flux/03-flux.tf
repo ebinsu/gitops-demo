@@ -1,5 +1,4 @@
 ## repo must not be empty; token must had admin permission;
-## terraform import github_repository.this  gitops-demo
 resource "github_repository" "this" {
   name = var.github_repository
   lifecycle {
@@ -7,7 +6,6 @@ resource "github_repository" "this" {
   }
 }
 
-# terraform destroy "-target=flux_bootstrap_git.this"
 resource "flux_bootstrap_git" "this" {
   depends_on         = [github_repository.this]
   path               = "dev/apps"
