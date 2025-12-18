@@ -16,6 +16,7 @@ spec:
       interval: 5m
   releaseName: vault
   values:
+    affinity: {}
     injector:
       image:
         repository: "docker.io/hashicorp/vault-k8s"
