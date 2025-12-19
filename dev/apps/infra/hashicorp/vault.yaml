@@ -16,16 +16,16 @@ spec:
       interval: 5m
   releaseName: vault
   values:
-    affinity: {}
+    affinity: ""
     injector:
       image:
         repository: "docker.io/hashicorp/vault-k8s"
     resources:
-     requests:
-       cpu: 50m
-       memory: 128Mi
-     limits:
-       cpu: 100m
-       memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 512Mi
     ui:
       enabled: true
