@@ -1,6 +1,6 @@
 ## repo must not be empty; token must had admin permission;
 resource "github_repository" "this" {
-  name = var.github_repository
+  name = "gitops-demo"
   lifecycle {
     prevent_destroy = true
   }
