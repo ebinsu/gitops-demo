@@ -7,11 +7,13 @@ spec:
   parentRefs:
     - name: traefik-gateway
       namespace: traefik
+  hostnames:
+    - "vault.master.com"
   rules:
     - matches:
         - path:
             type: PathPrefix
-            value: /vault
+            value: /
       backendRefs:
         - name: vault-ui
           port: 8200
