@@ -1,14 +1,14 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: vault
+  name: vault-ui
   namespace: hashicorp
 spec:
   parentRefs:
     - name: traefik-gateway
       namespace: traefik
   hostnames:
-    - "vault.master.com"
+    - "vault-ui.master.com"
   rules:
     - matches:
         - path:
