@@ -50,5 +50,20 @@ spec:
     - port: 6379
   selector:
     app: session
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: session-route
+  namespace: team-a
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+      sectionName: team-a-session
+  rules:
+    - backendRefs:
+        - name: session
+          port: 6379
 
 
