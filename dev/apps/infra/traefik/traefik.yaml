@@ -16,6 +16,9 @@ spec:
       interval: 5m
   releaseName: traefik
   values:
+    experimental:
+      kubernetesGateway:
+        enabled: true
     ingressClass:
       enabled: false
     providers:
