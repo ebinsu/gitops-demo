@@ -5,6 +5,7 @@ resources:
 - namespace.yaml
 - spring-mvc-demo.yaml
 - session.yml
+- session-scaler.yaml
 
 patches:
 - path: image-version/spring-mvc-demo.yaml
