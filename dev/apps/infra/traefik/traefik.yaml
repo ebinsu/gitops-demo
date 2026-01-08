@@ -28,6 +28,10 @@ spec:
         web:
           namespacePolicy:
             from: All
-        team-a-redis:
-          protocol: TCP
-          port: 16379
+    ports:
+      team-a-session:
+        port: 16379
+        expose:
+          default: false
+        exposedPort: 16379
+        protocol: TCP
