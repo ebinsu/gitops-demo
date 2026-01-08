@@ -8,7 +8,7 @@ spec:
   timeout: 5m
   chart:
     spec:
-      chart: traefik
+      chart: traefik-crds
       version: '1.12.0'
       sourceRef:
         kind: HelmRepository
