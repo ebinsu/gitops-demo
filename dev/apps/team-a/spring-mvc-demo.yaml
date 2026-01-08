@@ -49,11 +49,13 @@ spec:
   parentRefs:
     - name: traefik-gateway
       namespace: traefik
+  hostnames:
+    - "demo.master.com"
   rules:
     - matches:
         - path:
             type: PathPrefix
-            value: /demo
+            value: /
       backendRefs:
         - name: spring-mvc-demo
           port: 8080
