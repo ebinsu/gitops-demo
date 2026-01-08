@@ -19,7 +19,7 @@ spec:
       containers:
         - name: session
           image: redis:7.4.2
-          args: ["--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru", "--appendonly", "no", "--save 300 10"]
+          args: [ "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru", "--appendonly", "no", "--save 300 10" ]
           resources:
             requests:
               cpu: 50m
@@ -50,20 +50,20 @@ spec:
     - port: 6379
   selector:
     app: session
-#---
-#apiVersion: gateway.networking.k8s.io/v1alpha2
-#kind: TCPRoute
-#metadata:
-#  name: session-route
-#  namespace: team-a
-#spec:
-#  parentRefs:
-#    - name: traefik-gateway
-#      namespace: traefik
-#      sectionName: team-a-session
-#  rules:
-#    - backendRefs:
-#        - name: session
-#          port: 6379
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: session-route
+  namespace: team-a
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+      sectionName: team-a-session
+  rules:
+    - backendRefs:
+        - name: session
+          port: 6379
 
 
