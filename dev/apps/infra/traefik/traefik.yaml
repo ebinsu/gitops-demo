@@ -29,6 +29,9 @@ spec:
         web:
           namespacePolicy:
             from: All
+        team-a-session:
+          port: 16379
+          protocol: TCP
     ports:
       team-a-session:
         port: 16379
