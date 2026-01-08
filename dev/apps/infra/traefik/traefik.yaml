@@ -30,6 +30,8 @@ spec:
           namespacePolicy:
             from: All
         team-a-session:
+          namespacePolicy:
+            from: All
           port: 16379
           protocol: TCP
     ports:
