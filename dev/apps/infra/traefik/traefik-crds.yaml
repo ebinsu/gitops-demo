@@ -16,5 +16,4 @@ spec:
       interval: 5m
   releaseName: traefik-crds
   values:
-    gatewayAPI: true
     gatewayAPIExperimental: true
