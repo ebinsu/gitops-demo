@@ -59,3 +59,21 @@ spec:
       backendRefs:
         - name: spring-mvc-demo
           port: 8080
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: session-scaler
+  namespace: team-a
+spec:
+  scaleTargetRef:
+    name: spring-mvc-demo
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  cooldownPeriod:  30
+  triggers:
+    - type: external-push
+      metricType: AverageValue
+      metadata:
+        scalerAddress: session-scaler.team-a:6000
+        sessionSize: "1"
