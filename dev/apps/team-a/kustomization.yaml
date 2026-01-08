@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - spring-mvc-demo.yaml
+- session.yml
 
 patches:
 - path: image-version/spring-mvc-demo.yaml
