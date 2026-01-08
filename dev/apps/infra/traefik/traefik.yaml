@@ -41,6 +41,6 @@ spec:
       team-a-session:
         port: 16379
         expose:
-          default: false
+          default: true
         exposedPort: 16379
         protocol: TCP
