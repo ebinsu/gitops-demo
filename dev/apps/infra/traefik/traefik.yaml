@@ -28,3 +28,6 @@ spec:
         web:
           namespacePolicy:
             from: All
+        team-a-redis:
+          protocol: TCP
+          port: 16379
