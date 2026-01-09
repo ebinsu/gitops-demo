@@ -28,6 +28,13 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+      volumes:
+        - name: secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: team-a-vault
 ---
 apiVersion: v1
 kind: Service
