@@ -29,3 +29,5 @@ spec:
         memory: 512Mi
     ui:
       enabled: true
+    csi:
+      enabled: true
