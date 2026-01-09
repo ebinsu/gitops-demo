@@ -6,6 +6,7 @@ resources:
 - spring-mvc-demo.yaml
 - session.yml
 - session-scaler.yaml
+- secretproviderclass.yaml
 
 patches:
 - path: image-version/spring-mvc-demo.yaml
