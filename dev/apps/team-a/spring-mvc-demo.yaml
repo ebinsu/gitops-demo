@@ -28,6 +28,10 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
       volumes:
         - name: secrets
           csi:
