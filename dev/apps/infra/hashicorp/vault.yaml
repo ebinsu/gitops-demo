@@ -31,3 +31,5 @@ spec:
       enabled: true
     csi:
       enabled: true
+    server:
+      logLevel: "debug"
