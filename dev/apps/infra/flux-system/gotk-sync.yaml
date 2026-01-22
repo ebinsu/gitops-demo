@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./dev/apps
+  path: ./dev/apps/infra
   prune: true
   sourceRef:
     kind: GitRepository
