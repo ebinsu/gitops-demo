@@ -16,10 +16,10 @@ terraform {
     }
   }
 
-  backend "cos" {
-    region = "ap-nanjing"
-    bucket = "terraform-1256528427"
-    prefix = "dev/flux"
-    key    = "flux-1.tfstate"
-  }
+  # backend "cos" {
+  #   region = "ap-nanjing"
+  #   bucket = "terraform-1256528427"
+  #   prefix = "dev-1/flux"
+  #   key    = "flux-2.tfstate"
+  # }
 }

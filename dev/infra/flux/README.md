@@ -1,6 +1,6 @@
 terraform init  "-backend-config=..\backend.hcl"
 
-terraform import github_repository.this  gitops-demo
+terraform import github_repository.this gitops-demo
 
 terraform plan "-out=plan.tfplan" -var-file=".secrets.tfvars"
 
