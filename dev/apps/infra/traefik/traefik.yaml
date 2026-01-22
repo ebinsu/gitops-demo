@@ -32,15 +32,15 @@ spec:
         web:
           namespacePolicy:
             from: All
-        team-a-session:
-          namespacePolicy:
-            from: All
-          port: 16379
-          protocol: TCP
-    ports:
-      team-a-session:
-        port: 16379
-        expose:
-          default: true
-        exposedPort: 16379
-        protocol: TCP
+#        team-a-session:
+#          namespacePolicy:
+#            from: All
+#          port: 16379
+#          protocol: TCP
+#    ports:
+#      team-a-session:
+#        port: 16379
+#        expose:
+#          default: true
+#        exposedPort: 16379
+#        protocol: TCP
