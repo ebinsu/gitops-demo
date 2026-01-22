@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-mvc-demo
+  namespace: team-a
+spec:
+  selector:
+    matchLabels:
+      app: spring-mvc-demo
+      component: java
+  template:
+    metadata:
+      labels:
+        app: spring-mvc-demo
+        component: java
+    spec:
+      serviceAccountName: team-a
+      containers:
+        - image: "ebinsu/spring-mvc-demo:latest"
+          imagePullPolicy: IfNotPresent
+          name: spring-mvc-demo
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 512Mi
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
+      volumes:
+        - name: secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: team-a-vault
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-mvc-demo
+  namespace: team-a
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: spring-mvc-demo
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: demo-httproute
+  namespace: team-a
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+  hostnames:
+    - "demo.master.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: spring-mvc-demo
+          port: 8080
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: session-scaler
+  namespace: team-a
+spec:
+  scaleTargetRef:
+    name: spring-mvc-demo
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  cooldownPeriod:  30
+  triggers:
+    - type: external-push
+      metricType: AverageValue
+      metadata:
+        scalerAddress: session-scaler.team-a:6000
+        sessionSize: "1"

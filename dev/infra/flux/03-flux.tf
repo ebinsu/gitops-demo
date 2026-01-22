@@ -8,7 +8,7 @@ resource "github_repository" "this" {
 
 resource "flux_bootstrap_git" "this" {
   depends_on         = [github_repository.this]
-  path               = "dev/apps/infra"
+  path               = "dev/apps"
   embedded_manifests = true
   components_extra   = ["image-reflector-controller", "image-automation-controller"]
 }
