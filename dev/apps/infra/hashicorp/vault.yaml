@@ -18,6 +18,7 @@ spec:
   values:
     affinity: ""
     injector:
+      enabled: false
       image:
         repository: "docker.io/hashicorp/vault-k8s"
       logLevel: "debug"
