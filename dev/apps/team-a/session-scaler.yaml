@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session-scaler
+  namespace: team-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: session-scaler
+  template:
+    metadata:
+      labels:
+        app: session-scaler
+    spec:
+      containers:
+        - name: session-scaler
+          image: ebinsu/redis-session-push-scaler:1.1
+          env:
+            - name: REDIS_ADDRESS
+              value: "session:6379"
+          ports:
+            - containerPort: 6000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: session-scaler
+  namespace: team-a
+spec:
+  ports:
+    - port: 6000
+      targetPort: 6000
+  selector:
+    app: session-scaler
