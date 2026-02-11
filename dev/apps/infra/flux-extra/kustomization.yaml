@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - service-account.yaml
   - secret-store.yaml
+  - github-receiver.yaml

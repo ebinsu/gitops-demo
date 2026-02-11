@@ -1,3 +1,22 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: flux-external-secret
+  namespace: flux
+spec:
+  refreshInterval: 1m
+  secretStoreRef:
+    name: flux-vault-store
+    kind: SecretStore
+  target:
+    name: github-receiver-webhook-token
+    creationPolicy: Owner
+  data:
+    - secretKey: token
+      remoteRef:
+        key: flux
+        property: github-webhook-token
+---
 apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Receiver
 metadata:
@@ -6,7 +25,7 @@ metadata:
 spec:
   type: generic
   secretRef:
-    name: cluster-resource-receiver-webhook-token
+    name: github-receiver-webhook-token
   resources:
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
