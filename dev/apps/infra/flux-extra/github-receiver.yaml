@@ -31,3 +31,23 @@ spec:
       kind: Kustomization
       name: flux-system
       namespace: flux-system
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: github-receiver-httproute
+  namespace: flux-system
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+  hostnames:
+    - "github-receiver.master.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: webhook-receiver
+          port: 80
