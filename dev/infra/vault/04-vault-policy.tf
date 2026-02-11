@@ -7,3 +7,13 @@ path "kv/data/db-pass" {
 }
 EOT
 }
+
+resource "vault_policy" "flux" {
+  name = "flux"
+
+  policy = <<EOT
+path "kv/data/flux" {
+  capabilities = ["read"]
+}
+EOT
+}
