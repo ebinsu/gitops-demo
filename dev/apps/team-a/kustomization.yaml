@@ -8,8 +8,8 @@ resources:
   - session-scaler.yaml
   - secretproviderclass.yaml
   - service-account.yaml
-  - secret-store.yaml
-  - external-secret.yaml
+#  - secret-store.yaml
+#  - external-secret.yaml
 
 patches:
   - path: image-version/spring-mvc-demo.yaml
